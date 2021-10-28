@@ -75,5 +75,5 @@ http {
 
 ## TODO
 
- - nginx.Parse()
+ - parse multiline directives
  - Builder style functions
