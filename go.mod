@@ -1,1 +1,1 @@
-module "nginx-marshal"
+module github.com/qwerty2586/nginx-marshal

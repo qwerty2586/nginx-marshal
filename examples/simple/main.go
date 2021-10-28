@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"nginx-marshal/nginx"
+	"github.com/qwerty2586/nginx-marshal/nginx"
 	"time"
 )
 
-func main()  {
+func main() {
 	r := nginx.Root{
 		Lines: []string{
 			"daemon off",
@@ -41,5 +41,5 @@ func main()  {
 	start := time.Now()
 	fmt.Println("Example configuration from random tutorial\n")
 	fmt.Println(r)
-	fmt.Println("time took: ",time.Since(start))
+	fmt.Println("time took: ", time.Since(start))
 }
