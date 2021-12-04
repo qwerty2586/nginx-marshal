@@ -4,6 +4,8 @@ import (
 	"strings"
 )
 
+var TrailingCharacterEncoding = ";"
+
 func (s Root) String() string {
 	sb := strings.Builder{}
 	addLines(&sb, (*Submodule)(&s), 0)
@@ -18,7 +20,7 @@ func addLines(sb *strings.Builder, s *Submodule, level int) {
 	longest_fisrt_word := 0
 	for i, l := range s.Lines {
 		ll := strings.TrimSpace(l)
-		ll = strings.TrimRight(ll, ";")
+		ll = strings.TrimRight(ll, TrailingCharacterEncoding)
 		if ll == "" {
 			lines[i] = ""
 			continue
@@ -44,11 +46,13 @@ func addLines(sb *strings.Builder, s *Submodule, level int) {
 			sb.WriteString(splits[0])
 			sb.WriteString(strings.Repeat(" ", longest_fisrt_word+1-len(splits[0])))
 			sb.WriteString(strings.Join(splits[1:], " "))
-			sb.WriteString(";\n")
+			sb.WriteString(TrailingCharacterEncoding)
+			sb.WriteString("\n")
 		} else {
 			sb.WriteString(indent)
 			sb.WriteString(l)
-			sb.WriteString(";\n")
+			sb.WriteString(TrailingCharacterEncoding)
+			sb.WriteString("\n")
 		}
 
 	}
